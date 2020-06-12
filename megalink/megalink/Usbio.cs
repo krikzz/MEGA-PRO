@@ -64,6 +64,19 @@ namespace megalink
             }
         }
 
+        public void makeDir(string path)
+        {
+            path = path.Trim();
+
+            if (path.ToLower().StartsWith("sd:") == false)
+            {
+                throw new Exception("incorrect dir path: " + path);
+            }
+            Console.WriteLine("make dir: " + path);
+            path = path.Substring(3);
+            edio.dirMake(path);
+        }
+
         void copyFolder(string src, string dst)
         {
             if (!src.EndsWith("/")) src += "/";

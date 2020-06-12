@@ -109,6 +109,13 @@ namespace megalink
                     continue;
                 }
 
+                if (s.Equals("-mkdir"))
+                {
+                    usb.makeDir(args[i + 1]);
+                    i += 1;
+                    continue;
+                }
+
 
             }
 
