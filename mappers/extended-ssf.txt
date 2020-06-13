@@ -1,3 +1,4 @@
+Extended-SSF mapper description
 
 -------cartridge memory map-------
 0x000000: BANK0
