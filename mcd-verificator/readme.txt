@@ -4,4 +4,6 @@ Program can be executed on emulator or on real hardware. There is two way for us
 1. Replace CD bios with mcd-verificator and run it as CD bios
 2. Run it as regular cartridge game with attached mcd (mcd mode1)
 
+Results valid only at NTSC systems.
+
 !!WARNING!! Data stored in bram and ram-cart will be lost, so backup it before use.
