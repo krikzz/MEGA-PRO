@@ -7,3 +7,5 @@ Program can be executed on emulator or on real hardware. There is two way for us
 Results valid only at NTSC systems.
 
 !!WARNING!! Data stored in bram and ram-cart will be lost, so backup it before use.
+
+Sources is kinda haotic and unsorted, but should be enough to track problems. Just uploads my "test lab" as is (:
