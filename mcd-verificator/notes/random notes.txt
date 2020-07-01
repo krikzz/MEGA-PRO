@@ -1,0 +1,93 @@
+stat: 0F0000001F, cmd: 2004000009 <-	Number of tracks on disc
+stat: 9401350018, cmd: 200300000A <-	Total length of CD wanted.
+stat: 935653011E, cmd: 2005010007 <-	Start address (MSF) of track 1
+stat: 9500028016, cmd: 2005020006 <-	Start address (MSF) of track 2 etc.
+stat: 9513141124, cmd: 2005030005 <-
+stat: 9513202531, cmd: 2005040004 <-
+stat: 9515113949, cmd: 2005050003 <-
+stat: 9516334259, cmd: 2005060002 <-
+stat: 951759526E, cmd: 2005070001 <-
+stat: 9519405770, cmd: 2005080000 <-
+stat: 952101628D, cmd: 200509000F <-
+
+bit 7 in frame value is type of track?
+sector size: 2352
+
+delay between frames. every 120-160 framses approx
+10015003.41 - 00000000.0F 
+1F000000.4B - 00000000.0F
+10015005.4F - 00000000.0F
+
+5x sync patterns registered befor read flag triggered
+
+F0.000000.1F if disk here
+5F.000000.1A if open
+0F.000000.1F if close after open
+BF.000000.14 of no disk
+
+if open host will send 10.000000.0E. reacts on cmd 0x2, 0xC, 0xD. 0xF
+------------------------------------------------------------------
+stat bytes:
+0:	current state. 6-crc error, 7-rejected
+1:	sub cmd. toc cmd. F if busy
+2-7:	info. mostly toc data
+8:	arg. toc arg. probably 1 if busy. 
+9:	crc
+------------------------------------------------------------------
+cmd:
+0	nop
+1	stop all
+2	get toc
+3	read
+4	seek
+5	?
+6	pause
+7	resume
+8	fast forvard play (перемотка?)
+9 	fast reverse play (перемотка?)
+C	close tray
+D	open tray
+------------------------------------------------------------------ toc cmd
+toc commands:
+00	get current pos
+01	get current pos relative to cur track
+02	get current track
+03	total len of cd
+04	get num of tracks
+05	get start addr of track
+
+
+------------------------------------------------------------------ status
+ 0x1 = playing audio / reading data
+ 0x3 = fast forward play
+ 0x2 = seeking audio / data
+ 0x3 = scanning audio
+ 0x4 = disc paused
+ 0x5 = tray opened
+ 0x9 = disc stopped
+ 0xB = no disc
+ 0xC = reading leadout
+------------------------------------------------------------------- mem speed
+120057 for prg
+118970 wordram
+118805 regs
+by some reasons it will hang the system in 2m mode: move.l  #0x1234abcd, 0x80000. access to 0xc0000 hang also
+-------------------------------------------------------------------  mem mode
+writting 0xff at memode reg results in 0xCX return value
+2m:
+dmna switches memory between main and sub. 0=ram for main, 1=ram for sub
+ret is inverted dmna. read only
+visoin is same on both sides
+1m:
+dmna on main side: works as switch request. 0 to dmna to submit request
+dmna read on both side: 1 indicates that request is in process. sub should invert ret to clear this flag
+ret show current bank configuration. 0=bank0 for main, 1=bank1 for main
+dmna bit will be 1 if mem mode switched from from 2m to 1m, but ret bit will not match to previous value set in 1m mode
+
+seems like regs may react differently on byte and word access
+
+-------------------------------------------------------------------  timings
+read 16k
+with asic: 29.6ms
+witout: 23.6
+------------------------------------------------------------------- notes

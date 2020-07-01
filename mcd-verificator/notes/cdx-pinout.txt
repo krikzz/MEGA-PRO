@@ -1,0 +1,19 @@
+ 	01-36
+	02-35
+CDCK	03-34	GND
+IRQ	04-33	D/M
+HOCK	05-32	? turn on clocking. cdd reset?
+DB1	06-31	DB0
+DB3	07-30	DB2
+BCLK	08-29	C2PO
+LRCK	09-28	SDATA
+EXCK	10-27	16MHZ
+	11-26	sys rst
+	12-25	?pulse 2x
+	13-24	?75hz pulse
+	14-23	?7.35khz clock
+	15-22
+GND	16-21
+M.GND?	17-20	M.VCC
+GND	18-19	VCC
+

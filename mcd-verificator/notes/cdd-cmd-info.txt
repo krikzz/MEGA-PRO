@@ -1,0 +1,89 @@
+stat	: current system status
+cur toc	: indicates what info currently translated via args
+args[6]	: var info. selected by toc cmd
+flags	: state flags or cmd_arg
+
+-------------------------------stat
+0: Stopped
+1: play
+2: seek
+3: fast forward or reverse play
+4: pause
+5: tray open
+9: disk initialized and stopped. this state only after toc cmd5 or toc cmd2 first time
+B: no disk
+-------------------------------state flags bits:
+F0: 0-play, 1-pause/stop
+F2: 0-audio, 1-data
+
+-------------------------------toc:
+0 (absolute pos)
+args[0-5]	:pos
+
+
+1 (relative pos)
+args[0-5] 	:pos relative to cur track
+
+2 (cur track)
+args[0-1]	: cur track
+asgs[2] 	: ?
+args[3]		: 1 during play/pause. 0 between tracks
+args[4] 	: 4 for data track, 0 for audio (reflects flags ?)
+flags		: state flags
+
+3 (cd len)
+args [0-5] cd len
+
+4 (num of tracks). this cmd should be executed first
+asgs [0-1]	: first track
+args [2-3]	: last track
+args [4-5]	: ? (10 for sonic)
+flags		: state flags
+
+
+5 (track addr)
+args [0-5]	: address of track. const value. track number selected by cmd_arg 0-1
+flags		: number of track 
+
+
+F (busy)
+no disk or tray open or command in process
+
+commands.
+-------------------------------------------------------------------01 stop
+
+-------------------------------------------------------------------02  get toc
+all toc cmd exept 5 just change currently shown info
+0: abs pos
+1: rel pos
+2: cur track
+3: cd len
+4: num of tracks
+5: track addr. this one results stop playing 
+-------------------------------------------------------------------03 play
+acts like seek(4)+resume(7) pair
+
+-------------------------------------------------------------------04 seek
+seek certain address and pause
+when seek complete, sets to pause and looped around nearest 8 sectors - 2.
+example: seek pos 250, loop range 240-247
+if execute resume (cmd 06) disk cdd wil start reading from current pos. audio will play if it audio track
+
+this cmd ressets toc to 0 if runs from stop state
+
+-------------------------------------------------------------------06 pause
+just an pause. 
+same state as after seek completion
+
+-------------------------------------------------------------------07 resume
+resume play from current position. If run without seek will start from sector 0x200
+
+-------------------------------------------------------------------08 fast forward play
+fast forward play.
+status in this mode: 0x3
+if execute resume comand will back to normal speed play
+
+-------------------------------------------------------------------09 fast reverse play
+same as 08 but revers.
+status also 03 in this mode
+-------------------------------------------------------------------0A track jump ?

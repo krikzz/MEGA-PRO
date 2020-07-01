@@ -1,0 +1,45 @@
+ram addr   rd   wr
+0   19E80 0000 		;X
+1   xxxxx xxxx		;Y
+0   19E84 0800		;dX
+1   xxxxx xxxx		;dY
+
+0   20000 0000		;stamp
+0   00000 0000		;read new dot
+0   20000 0000
+0   00000 0000
+0   20000 0000
+0   00000 0000
+0   20000 0000
+0   00000 0000
+0   1A000 0000 0000	;read 4 old, write 4 new dots
+
+0   20000 0000
+1   xxxxx xxxx
+0   20000 0000
+1   xxxxx xxxx
+0   20000 0000
+1   xxxxx xxxx
+0   20000 0000
+1   xxxxx xxxx
+1   xxxxx xxxx xxxx
+
+0   20000 0000
+0   00040 0000
+0   20000 0000
+0   00040 0000
+0   20000 0000
+0   00040 0000
+0   20000 0000
+0   00040 0000
+0   1A0A0 0000 0000
+
+0   20000 0000
+1   xxxxx xxxx
+0   20000 0000
+1   xxxxx xxxx
+0   20000 0000
+1   xxxxx xxxx
+0   20000 0000
+1   xxxxx xxxx
+1   xxxxx xxxx xxxx
