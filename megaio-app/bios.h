@@ -61,7 +61,7 @@ typedef enum {
 #define REG_SYS_STAT    *((vu16 *)0xA130D4)
 #define REG_TIMER       *((vu16 *)0xA130D6)
 
-#define FIFO_CPU_RXF    0x8000 //fifo flags. system cpu can read
+#define FIFO_CPU_RXF    0x8000 //fifo flags. system cpu can read.
 #define FIFO_ARM_RXF    0x4000 //fifo flags. mcu can read
 #define FIFO_RXF_MSK    0x7FF
 
