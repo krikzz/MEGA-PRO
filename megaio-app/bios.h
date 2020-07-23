@@ -75,8 +75,8 @@ typedef enum {
 #define HOST_RST_HARD   0x02
 //******************************************************************************
 //PI bus addresses
-#define ADDR_ROM        0x0000000       //PRG ROM
-#define ADDR_SRAM       0x1000000       //CHR ROM
+#define ADDR_ROM        0x0000000       //ROM MEMORY    (2x8MB PSRAM)
+#define ADDR_SRAM       0x1000000       //SRAM          (fast 10ns mem)
 #define ADDR_BRAM       0x1080000       //Batery RAM 
 #define ADDR_CFG        0x1800000       //various system configs
 #define ADDR_SSR        0x1800100       //save state. sniffer data and mapper registers if any. !used by sms core!
@@ -99,8 +99,8 @@ typedef enum {
 #define ADDR_FLA_FPGA   0x40000         //boot fails fpga code
 #define ADDR_FLA_ICOR   0x80000         //mcu firmware update
 
-#define SIZE_ROM        0x1000000       //PRG chip size
-#define SIZE_BRAM       0x80000         //whole battery ram size
+#define SIZE_ROM        0x1000000       //ROM chip size 
+#define SIZE_BRAM       0x80000         //battery ram size
 #define SIZE_SRAM       0x80000         //SRAM chip size
 #define SIZE_OS_CODE    0x40000         //OS CODE SIZE 
 #define SIZE_OS_RAM     0x40000         //OS RAM SIZE

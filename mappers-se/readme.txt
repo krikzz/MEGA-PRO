@@ -1,4 +1,4 @@
-Simplified mapper templates. Can be used as base for custom mappers.
+Simplified mapper templates. Can be used as simple base for custom mappers.
 
 map_smd - regular megadrive mapper
 map_ssf -  extended ssf mapper
@@ -8,5 +8,5 @@ User mapper can be forced for specific ROM using key word in ROM header: "SEGA E
 Offset for Genesis ROM: 0x100
 Offset for MasterSystem ROM: 0x7FE0
 
-User mapper should be stored as MEGA/mappers/XX.rbf
-Also for test purposes mapper can me loaded via USB. Refer to megalink tool for details
+User mapper should be stored as MEGA/mappers/XX.rbf or stored with ROM in same folder
+Also for test purposes mapper can be loaded via USB. Refer to megalink tool for details
