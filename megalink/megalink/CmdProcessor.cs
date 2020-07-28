@@ -11,7 +11,6 @@ namespace megalink
     {
 
 
-
         static Edio edio;
         static Usbio usb;
         public static void start(string[] args, Edio io)
@@ -29,6 +28,18 @@ namespace megalink
                 {
                     edio.hostReset(Edio.HOST_RST_SOFT);
                     continue;
+                }
+
+                if (s.Equals("-hreset"))
+                {
+                    edio.hostReset(Edio.HOST_RST_HARD);
+                    continue;
+                }
+
+                if (s.Equals("-rtype"))//force reset type. mostly for using with mega-sg (-rtype hard)
+                {
+                    cmd_forceRstType(args[i + 1]);
+                    i += 1;
                 }
 
                 if (s.Equals("-recovery"))
@@ -141,6 +152,7 @@ namespace megalink
 
         static void rstControl(int addr)
         {
+
             if(addr < Edio.ADDR_CFG)
             {
                 edio.hostReset(Edio.HOST_RST_SOFT);
@@ -286,6 +298,24 @@ namespace megalink
             edio.flaWR(addr, data, 0, data.Length);
 
             Console.WriteLine("ok");
+        }
+
+        static void cmd_forceRstType(string type)
+        {
+            if (type.Equals("hard"))
+            {
+                edio.forceRstType(Edio.HOST_RST_HARD);
+            }
+
+            if (type.Equals("soft"))
+            {
+                edio.forceRstType(Edio.HOST_RST_SOFT);
+            }
+
+            if (type.Equals("off"))
+            {
+                edio.forceRstType(Edio.HOST_RST_OFF);
+            }
         }
 
     }

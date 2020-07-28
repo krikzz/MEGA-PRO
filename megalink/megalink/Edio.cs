@@ -36,6 +36,7 @@ namespace megalink
 
     }
 
+
     class Edio
     {
 
@@ -123,15 +124,18 @@ namespace megalink
         const byte CMD_RUN_APP = 0xF1;
 
         SerialPort port;
+        byte force_rst;
 
         public Edio()
         {
             seek();
+            force_rst = HOST_RST_OFF;
         }
 
         public Edio(string port_name)
         {
             openConnrction(port_name);
+            force_rst = HOST_RST_OFF;
         }
 
         void seek()
@@ -769,9 +773,16 @@ namespace megalink
 
         public void hostReset(byte rst)
         {
+            if (force_rst != HOST_RST_OFF && rst != HOST_RST_OFF) rst = force_rst;
             txCMD(CMD_HOST_RST);
             tx8(rst);
         }
+
+        public void forceRstType(byte rst)
+        {
+            force_rst = rst;
+        }
+
         //************************************************************************************************ usb service mode. System enters in service mode if cart powered via usb only
         public void recovery()
         {
@@ -854,6 +865,8 @@ namespace megalink
 
             throw new Exception("boot timeout");
         }
+
+       
     }
 
 
