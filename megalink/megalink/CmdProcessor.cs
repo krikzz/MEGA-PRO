@@ -30,12 +30,6 @@ namespace megalink
                     continue;
                 }
 
-                if (s.Equals("-hreset"))
-                {
-                    edio.hostReset(Edio.HOST_RST_HARD);
-                    continue;
-                }
-
                 if (s.Equals("-rtype"))//force reset type. mostly for using with mega-sg (-rtype hard)
                 {
                     cmd_forceRstType(args[i + 1]);
