@@ -1,0 +1,7 @@
+INC_MODE=1
+EXE_MODE=2
+BRM_SIZE=0
+
+
+
+

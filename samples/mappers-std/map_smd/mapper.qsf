@@ -1,0 +1,585 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2013 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+# Date created = 18:38:45  February 12, 2020
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		mega-pro_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE15F23C8
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "18:38:45  FEBRUARY 12, 2020"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 484
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 8
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name GENERATE_RBF_FILE ON
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_FLASH_NCE_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+set_location_assignment PIN_L22 -to addr[1]
+set_location_assignment PIN_M21 -to addr[2]
+set_location_assignment PIN_P22 -to addr[3]
+set_location_assignment PIN_N20 -to addr[4]
+set_location_assignment PIN_P16 -to addr[5]
+set_location_assignment PIN_W20 -to addr[6]
+set_location_assignment PIN_V22 -to addr[7]
+set_location_assignment PIN_W21 -to addr[8]
+set_location_assignment PIN_V21 -to addr[9]
+set_location_assignment PIN_U21 -to addr[10]
+set_location_assignment PIN_W22 -to addr[11]
+set_location_assignment PIN_U22 -to addr[12]
+set_location_assignment PIN_U19 -to addr[13]
+set_location_assignment PIN_P20 -to addr[14]
+set_location_assignment PIN_P21 -to addr[15]
+set_location_assignment PIN_N22 -to addr[16]
+set_location_assignment PIN_M22 -to addr[17]
+set_location_assignment PIN_T21 -to addr[18]
+set_location_assignment PIN_U20 -to addr[19]
+set_location_assignment PIN_R20 -to addr[20]
+set_location_assignment PIN_P17 -to addr[21]
+set_location_assignment PIN_N19 -to addr[22]
+set_location_assignment PIN_R22 -to addr[23]
+set_location_assignment PIN_G21 -to as
+set_location_assignment PIN_M2 -to btn
+set_location_assignment PIN_H22 -to cart
+set_location_assignment PIN_N21 -to cas
+set_location_assignment PIN_K22 -to ce_hi
+set_location_assignment PIN_L21 -to ce_lo
+set_location_assignment PIN_A11 -to clk50
+set_location_assignment PIN_K16 -to data[0]
+set_location_assignment PIN_J17 -to data[1]
+set_location_assignment PIN_E22 -to data[2]
+set_location_assignment PIN_D21 -to data[3]
+set_location_assignment PIN_D22 -to data[4]
+set_location_assignment PIN_F22 -to data[5]
+set_location_assignment PIN_J16 -to data[6]
+set_location_assignment PIN_L15 -to data[7]
+set_location_assignment PIN_K15 -to data[8]
+set_location_assignment PIN_F19 -to data[9]
+set_location_assignment PIN_E21 -to data[10]
+set_location_assignment PIN_C22 -to data[11]
+set_location_assignment PIN_F21 -to data[12]
+set_location_assignment PIN_F20 -to data[13]
+set_location_assignment PIN_H20 -to data[14]
+set_location_assignment PIN_J15 -to data[15]
+set_location_assignment PIN_L16 -to dat_dir
+set_location_assignment PIN_C21 -to dat_oe
+set_location_assignment PIN_J21 -to dtak
+set_location_assignment PIN_T22 -to eclk
+set_location_assignment PIN_E1 -to mcu_fifo_rxf
+set_location_assignment PIN_N1 -to hrst
+set_location_assignment PIN_G4 -to mcu_busy
+set_location_assignment PIN_B21 -to mkey_oe
+set_location_assignment PIN_B22 -to mkey_we
+set_location_assignment PIN_D1 -to mcu_mode
+set_location_assignment PIN_M20 -to oe
+set_location_assignment PIN_D19 -to ram0_addr[21]
+set_location_assignment PIN_H16 -to ram0_addr[0]
+set_location_assignment PIN_E14 -to ram0_addr[1]
+set_location_assignment PIN_E13 -to ram0_addr[2]
+set_location_assignment PIN_G16 -to ram0_addr[3]
+set_location_assignment PIN_F14 -to ram0_addr[4]
+set_location_assignment PIN_E16 -to ram0_addr[5]
+set_location_assignment PIN_F15 -to ram0_addr[6]
+set_location_assignment PIN_E15 -to ram0_addr[7]
+set_location_assignment PIN_A20 -to ram0_addr[8]
+set_location_assignment PIN_B20 -to ram0_addr[9]
+set_location_assignment PIN_A13 -to ram0_addr[10]
+set_location_assignment PIN_B13 -to ram0_addr[11]
+set_location_assignment PIN_C20 -to ram0_addr[12]
+set_location_assignment PIN_D13 -to ram0_addr[13]
+set_location_assignment PIN_D20 -to ram0_addr[14]
+set_location_assignment PIN_C13 -to ram0_addr[15]
+set_location_assignment PIN_D15 -to ram0_addr[16]
+set_location_assignment PIN_F16 -to ram0_addr[17]
+set_location_assignment PIN_B19 -to ram0_addr[18]
+set_location_assignment PIN_A19 -to ram0_addr[19]
+set_location_assignment PIN_A14 -to ram0_addr[20]
+set_location_assignment PIN_F13 -to ram0_ce
+set_location_assignment PIN_D17 -to ram0_data[0]
+set_location_assignment PIN_F12 -to ram0_data[1]
+set_location_assignment PIN_C15 -to ram0_data[2]
+set_location_assignment PIN_H12 -to ram0_data[3]
+set_location_assignment PIN_B16 -to ram0_data[4]
+set_location_assignment PIN_B15 -to ram0_data[5]
+set_location_assignment PIN_A16 -to ram0_data[6]
+set_location_assignment PIN_A15 -to ram0_data[7]
+set_location_assignment PIN_C17 -to ram0_data[8]
+set_location_assignment PIN_C19 -to ram0_data[9]
+set_location_assignment PIN_H17 -to ram0_data[10]
+set_location_assignment PIN_H19 -to ram0_data[11]
+set_location_assignment PIN_A17 -to ram0_data[12]
+set_location_assignment PIN_A18 -to ram0_data[13]
+set_location_assignment PIN_B17 -to ram0_data[14]
+set_location_assignment PIN_B18 -to ram0_data[15]
+set_location_assignment PIN_H18 -to ram0_lb
+set_location_assignment PIN_G17 -to ram0_oe
+set_location_assignment PIN_F17 -to ram0_ub
+set_location_assignment PIN_B14 -to ram0_we
+set_location_assignment PIN_F8 -to ram1_addr[0]
+set_location_assignment PIN_E4 -to ram1_addr[1]
+set_location_assignment PIN_E3 -to ram1_addr[2]
+set_location_assignment PIN_G8 -to ram1_addr[3]
+set_location_assignment PIN_C4 -to ram1_addr[4]
+set_location_assignment PIN_E7 -to ram1_addr[5]
+set_location_assignment PIN_E5 -to ram1_addr[6]
+set_location_assignment PIN_E6 -to ram1_addr[7]
+set_location_assignment PIN_B10 -to ram1_addr[8]
+set_location_assignment PIN_A10 -to ram1_addr[9]
+set_location_assignment PIN_B3 -to ram1_addr[10]
+set_location_assignment PIN_A3 -to ram1_addr[11]
+set_location_assignment PIN_D10 -to ram1_addr[12]
+set_location_assignment PIN_B1 -to ram1_addr[13]
+set_location_assignment PIN_C10 -to ram1_addr[14]
+set_location_assignment PIN_C1 -to ram1_addr[15]
+set_location_assignment PIN_B2 -to ram1_addr[16]
+set_location_assignment PIN_F7 -to ram1_addr[17]
+set_location_assignment PIN_A9 -to ram1_addr[18]
+set_location_assignment PIN_B9 -to ram1_addr[19]
+set_location_assignment PIN_B4 -to ram1_addr[20]
+set_location_assignment PIN_C8 -to ram1_addr[21]
+set_location_assignment PIN_C3 -to ram1_ce
+set_location_assignment PIN_D2 -to ram1_data[0]
+set_location_assignment PIN_F2 -to ram1_data[1]
+set_location_assignment PIN_C2 -to ram1_data[2]
+set_location_assignment PIN_E2 -to ram1_data[3]
+set_location_assignment PIN_A6 -to ram1_data[4]
+set_location_assignment PIN_A5 -to ram1_data[5]
+set_location_assignment PIN_B6 -to ram1_data[6]
+set_location_assignment PIN_B5 -to ram1_data[7]
+set_location_assignment PIN_D6 -to ram1_data[8]
+set_location_assignment PIN_C7 -to ram1_data[9]
+set_location_assignment PIN_G10 -to ram1_data[10]
+set_location_assignment PIN_F10 -to ram1_data[11]
+set_location_assignment PIN_B7 -to ram1_data[12]
+set_location_assignment PIN_B8 -to ram1_data[13]
+set_location_assignment PIN_A7 -to ram1_data[14]
+set_location_assignment PIN_A8 -to ram1_data[15]
+set_location_assignment PIN_C6 -to ram1_lb
+set_location_assignment PIN_F9 -to ram1_oe
+set_location_assignment PIN_G9 -to ram1_ub
+set_location_assignment PIN_A4 -to ram1_we
+set_location_assignment PIN_AA10 -to ram2_addr[0]
+set_location_assignment PIN_AA3 -to ram2_addr[1]
+set_location_assignment PIN_AB3 -to ram2_addr[2]
+set_location_assignment PIN_U7 -to ram2_addr[3]
+set_location_assignment PIN_V7 -to ram2_addr[4]
+set_location_assignment PIN_Y8 -to ram2_addr[5]
+set_location_assignment PIN_Y7 -to ram2_addr[6]
+set_location_assignment PIN_Y6 -to ram2_addr[7]
+set_location_assignment PIN_V9 -to ram2_addr[8]
+set_location_assignment PIN_V8 -to ram2_addr[9]
+set_location_assignment PIN_V5 -to ram2_addr[10]
+set_location_assignment PIN_V4 -to ram2_addr[11]
+set_location_assignment PIN_V10 -to ram2_addr[12]
+set_location_assignment PIN_V6 -to ram2_addr[13]
+set_location_assignment PIN_V11 -to ram2_addr[14]
+set_location_assignment PIN_W6 -to ram2_addr[15]
+set_location_assignment PIN_W7 -to ram2_addr[16]
+set_location_assignment PIN_U8 -to ram2_addr[17]
+set_location_assignment PIN_AA4 -to ram2_ce
+set_location_assignment PIN_AB4 -to ram2_data[0]
+set_location_assignment PIN_AA5 -to ram2_data[1]
+set_location_assignment PIN_AB5 -to ram2_data[2]
+set_location_assignment PIN_Y4 -to ram2_data[3]
+set_location_assignment PIN_W2 -to ram2_data[4]
+set_location_assignment PIN_V2 -to ram2_data[5]
+set_location_assignment PIN_Y2 -to ram2_data[6]
+set_location_assignment PIN_Y3 -to ram2_data[7]
+set_location_assignment PIN_AA9 -to ram2_data[8]
+set_location_assignment PIN_AA8 -to ram2_data[9]
+set_location_assignment PIN_AB8 -to ram2_data[10]
+set_location_assignment PIN_U9 -to ram2_data[11]
+set_location_assignment PIN_U11 -to ram2_data[12]
+set_location_assignment PIN_U10 -to ram2_data[13]
+set_location_assignment PIN_AB7 -to ram2_data[14]
+set_location_assignment PIN_AA7 -to ram2_data[15]
+set_location_assignment PIN_Y10 -to ram2_lb
+set_location_assignment PIN_AB10 -to ram2_oe
+set_location_assignment PIN_AB9 -to ram2_ub
+set_location_assignment PIN_V3 -to ram2_we
+set_location_assignment PIN_AA20 -to ram3_addr[0]
+set_location_assignment PIN_AB13 -to ram3_addr[1]
+set_location_assignment PIN_AA13 -to ram3_addr[2]
+set_location_assignment PIN_U14 -to ram3_addr[3]
+set_location_assignment PIN_Y13 -to ram3_addr[4]
+set_location_assignment PIN_W15 -to ram3_addr[5]
+set_location_assignment PIN_Y17 -to ram3_addr[6]
+set_location_assignment PIN_W17 -to ram3_addr[7]
+set_location_assignment PIN_T18 -to ram3_addr[8]
+set_location_assignment PIN_T16 -to ram3_addr[9]
+set_location_assignment PIN_V14 -to ram3_addr[10]
+set_location_assignment PIN_T12 -to ram3_addr[11]
+set_location_assignment PIN_T15 -to ram3_addr[12]
+set_location_assignment PIN_W14 -to ram3_addr[13]
+set_location_assignment PIN_U15 -to ram3_addr[14]
+set_location_assignment PIN_W13 -to ram3_addr[15]
+set_location_assignment PIN_V16 -to ram3_addr[16]
+set_location_assignment PIN_V15 -to ram3_addr[17]
+set_location_assignment PIN_AB15 -to ram3_data[0]
+set_location_assignment PIN_AA15 -to ram3_data[1]
+set_location_assignment PIN_AB16 -to ram3_data[2]
+set_location_assignment PIN_AA16 -to ram3_data[3]
+set_location_assignment PIN_R12 -to ram3_data[4]
+set_location_assignment PIN_U13 -to ram3_data[5]
+set_location_assignment PIN_V12 -to ram3_data[6]
+set_location_assignment PIN_V13 -to ram3_data[7]
+set_location_assignment PIN_AA18 -to ram3_data[8]
+set_location_assignment PIN_AA17 -to ram3_data[9]
+set_location_assignment PIN_AB18 -to ram3_data[10]
+set_location_assignment PIN_AB17 -to ram3_data[11]
+set_location_assignment PIN_R19 -to ram3_data[12]
+set_location_assignment PIN_T17 -to ram3_data[13]
+set_location_assignment PIN_W19 -to ram3_data[14]
+set_location_assignment PIN_R18 -to ram3_data[15]
+set_location_assignment PIN_AA19 -to ram3_lb
+set_location_assignment PIN_AB20 -to ram3_oe
+set_location_assignment PIN_AB19 -to ram3_ub
+set_location_assignment PIN_U12 -to ram3_we
+set_location_assignment PIN_H21 -to rst
+set_location_assignment PIN_N17 -to sms[0]
+set_location_assignment PIN_N18 -to sms[1]
+set_location_assignment PIN_N16 -to sms[2]
+set_location_assignment PIN_M16 -to sms[3]
+set_location_assignment PIN_H1 -to spi_miso
+set_location_assignment PIN_K1 -to spi_mosi
+set_location_assignment PIN_G1 -to spi_sck
+set_location_assignment PIN_J22 -to we_hi
+set_location_assignment PIN_K21 -to we_lo
+set_location_assignment PIN_G22 -to vclk
+set_global_assignment -name CYCLONEIII_CONFIGURATION_SCHEME "PASSIVE SERIAL"
+set_location_assignment PIN_H5 -to mcu_rst
+set_location_assignment PIN_H2 -to mcu_sync
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to rst
+set_location_assignment PIN_F1 -to spi_ss
+set_location_assignment PIN_M1 -to led_r
+set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS ON
+set_global_assignment -name ALLOW_ANY_RAM_SIZE_FOR_RECOGNITION OFF
+set_location_assignment PIN_N2 -to led_g
+set_location_assignment PIN_AA21 -to dac_mclk
+set_location_assignment PIN_Y21 -to dac_lrck
+set_location_assignment PIN_R21 -to dac_sdin
+set_location_assignment PIN_Y22 -to dac_sclk
+set_location_assignment PIN_T1 -to gpclk
+set_location_assignment PIN_AA1 -to gpio[0]
+set_location_assignment PIN_Y1 -to gpio[1]
+set_location_assignment PIN_W1 -to gpio[2]
+set_location_assignment PIN_V1 -to gpio[3]
+set_location_assignment PIN_U2 -to gpio[4]
+set_location_assignment PIN_J1 -to xbus[0]
+set_location_assignment PIN_J2 -to xbus[1]
+set_location_assignment PIN_J3 -to xbus[2]
+set_location_assignment PIN_G3 -to xbus[3]
+set_global_assignment -name VERILOG_FILE map_hub.v
+set_global_assignment -name VERILOG_FILE map_smd.v
+set_global_assignment -name VERILOG_FILE ../base/top.v
+set_global_assignment -name VERILOG_FILE ../base/pi.v
+set_global_assignment -name VERILOG_FILE ../base/map_os.v
+set_global_assignment -name VERILOG_FILE ../base/map_dma.v
+set_global_assignment -name VERILOG_FILE ../base/base_io.v
+set_global_assignment -name VERILOG_INCLUDE_FILE ../base/defs.v
+set_global_assignment -name VERILOG_INCLUDE_FILE ../base/sys_cfg.v
+set_global_assignment -name VERILOG_INCLUDE_FILE ../base/mapio.v
+set_global_assignment -name VERILOG_INCLUDE_FILE ../base/map_in.v
+set_global_assignment -name VERILOG_INCLUDE_FILE ../base/mdbus.v
+set_global_assignment -name VERILOG_INCLUDE_FILE ../base/pi_bus.v
+set_global_assignment -name SDC_FILE ../base/clocks.sdc
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to xbus[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[23]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[22]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[21]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[20]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[19]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[18]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[17]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[16]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to addr[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to as
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to btn
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to cart
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to cas
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ce_hi
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ce_lo
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to clk50
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to dac_lrck
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to dac_mclk
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to dac_sclk
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to dac_sdin
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to dat_dir
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to dat_oe
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to data[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to dtak
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to eclk
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to gpclk
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to gpio[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to gpio[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to gpio[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to gpio[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to gpio[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to hrst
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to led_g
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to led_r
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to mcu_busy
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to mcu_fifo_rxf
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to mcu_mode
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to mcu_rst
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to mcu_sync
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to mkey_oe
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to mkey_we
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to oe
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[21]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[20]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[19]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[18]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[17]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[16]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_addr[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_ce
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_data[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_lb
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_oe
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_ub
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram0_we
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[21]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[20]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[19]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[18]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[17]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[16]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_addr[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_ce
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_data[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_lb
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_oe
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_ub
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram1_we
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[17]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[16]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_addr[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_ce
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_data[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_lb
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_oe
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_ub
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram2_we
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[17]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[16]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_addr[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_data[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_lb
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_oe
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_ub
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to ram3_we
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to rst
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to sms[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to sms[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to sms[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to sms[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to spi_miso
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to spi_mosi
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to spi_sck
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to spi_ss
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to vclk
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to we_hi
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to we_lo
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to xbus[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to xbus[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to xbus[1]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

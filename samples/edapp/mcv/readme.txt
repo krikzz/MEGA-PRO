@@ -1,0 +1,1 @@
+Built-in megacolor player. Mapper sources located in mappers-std\map_fmv
