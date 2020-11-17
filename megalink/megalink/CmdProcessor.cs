@@ -8,7 +8,7 @@ using System.IO;
 namespace megalink
 {
     class CmdProcessor
-    {
+    { 
 
 
         static Edio edio;
@@ -18,6 +18,13 @@ namespace megalink
 
             edio = io;
             usb = new Usbio(edio);
+            bool usr_fpga = false;
+
+            for (int i = 0; i < args.Length; i++)
+            {
+                string s = args[i].ToLower().Trim();
+                if (s.EndsWith(".rbf")) usr_fpga = true;
+            }
 
 
             for (int i = 0; i < args.Length; i++)
@@ -90,7 +97,7 @@ namespace megalink
                     cmd_memRead(args[i + 1], args[i + 2], args[i + 3]);
                     i += 3;
                 }
-              
+
 
                 if (s.Equals("-verify"))
                 {
@@ -102,8 +109,7 @@ namespace megalink
 
                 if (s.EndsWith(".bin") || s.EndsWith(".gen") || s.EndsWith(".md") || s.EndsWith(".smd") || s.EndsWith(".32x") || s.EndsWith(".sms") || s.EndsWith(".nes"))
                 {
-                    //cmdMemWrite(args[i], "0");
-                    cmd_loadGame(s);
+                    cmd_loadGame(s, usr_fpga);
                     continue;
                 }
 
@@ -238,15 +244,17 @@ namespace megalink
             byte[] fpga = File.ReadAllBytes(path);
 
             rstControl(0);
+            edio.flush();
+
             Console.Write("FPGA loading...");
             edio.fpgInit(fpga);
             Console.WriteLine("ok");
         }
 
-        static void cmd_loadGame(string path)
+        static void cmd_loadGame(string path, bool usr_fpga)
         {
             Console.Write("Load game...");
-            usb.loadGame(path);
+            usb.loadGame(path, usr_fpga);
             Console.WriteLine("ok");
         }
 

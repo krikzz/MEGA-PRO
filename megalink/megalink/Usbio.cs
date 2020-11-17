@@ -99,14 +99,16 @@ namespace megalink
             }
         }
 
-        public void loadGame(string path)
+        public void loadGame(string path, bool usr_fpga)
         {
             int resp;
             int offset = 0;
+            bool sms = path.ToLower().EndsWith(".sms") || path.ToLower().EndsWith(".gg");
+
             byte[] data = File.ReadAllBytes(path);
             if (data.Length > Edio.MAX_ROM_SIZE) throw new Exception("ROM is too big");
 
-            if (data.Length % 1024 == 512) offset = 512;//skip sms header
+            if (data.Length % 1024 == 512 && sms) offset = 512;//skip sms header
 
             int dst_addr = Edio.ADDR_ROM;
             if (path.ToLower().EndsWith(".nes")) dst_addr += 0x10000;
@@ -119,6 +121,8 @@ namespace megalink
             if (resp != 'r') throw new Exception("unexpected response: " + resp);
 
             hostTest();
+
+            if(usr_fpga)edio.fifoWR("*u");//skip fpga reloading from sd
 
             edio.fifoWR("*g");
             edio.fifoTX32(data.Length - offset);
