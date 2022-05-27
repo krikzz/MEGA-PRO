@@ -1,0 +1,1 @@
+E:\projects\MEGA-ED-PRO\_tools\megalink\megalink\bin\Release\megalink.exe E:\projects\MEGA-ED-PRO\dev\wspr\fpga\mapper\output_files\mega-pro.rbf mega-wspr.md
