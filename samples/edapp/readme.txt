@@ -6,3 +6,19 @@ System also can pass to app.md patch to the target file instead of including fil
 Also app.md can use own custom maper if mapper.rbf stored in same folder along with app.md
 
 Refer to MEGA/edapp folders details
+
+
+config.txt values:
+
+inc modes:
+ 0 - include target file binary
+ 1 - include patht to the target file
+ data will be included to the rom memory right after app.md binary end
+ 
+exec modes:
+ 1 - include to the recently played list
+ 2 - do no include to the recently played list
+
+bram size (backup memory):
+ size = 8192<<(val-1). 1=8192, 2=16384, 3=32768 and so on
+ 0 - off
