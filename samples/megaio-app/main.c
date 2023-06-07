@@ -244,7 +244,7 @@ u8 fileInfo() {
 
     gConsPrint("path: ");
     gAppendString(path);
-    
+
     gConsPrint("size: ");
     gAppendNum(inf.size);
 
