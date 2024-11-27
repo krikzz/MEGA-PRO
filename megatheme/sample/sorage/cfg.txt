@@ -1,0 +1,16 @@
+fout=sorage.bgr
+tset=tileset.png
+font=font.png
+
+#header
+hdr_style=9
+hdr_pal=1
+
+#footer
+foot_style=13
+foot_pal=1
+
+#files list
+fli_style=13
+
+scroll_h=-4

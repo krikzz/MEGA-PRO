@@ -1,0 +1,5 @@
+fout=basic2.bgr
+tset=tileset.png
+font=font.png
+
+

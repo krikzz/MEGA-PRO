@@ -1,0 +1,21 @@
+fout=basic1.bgr
+font=font.png
+tset=tileset.png
+
+
+#header
+hdr_style=9
+hdr_pal=1
+hdr_w=38
+hdr_x=1
+hdr_bx=0
+
+#footer
+foot_style=13
+foot_pal=1
+foot_w=38
+foot_x=1
+foot_bx=0
+
+#files list
+fli_style=13

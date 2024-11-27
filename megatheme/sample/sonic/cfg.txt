@@ -1,0 +1,21 @@
+fout=sonic.bgr
+tset=tileset.png
+font=font.png
+
+#header
+hdr_style=9
+hdr_pal=1
+
+#footer
+foot_style=13
+foot_pal=1
+
+#files list
+fli_style=13
+fli_bx=1
+fli_by=1
+
+
+scroll_h={-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-10,-10,-10,-10,-10,-10,-11,-12,-13,-14,-15,-16,-32,-32,-32,-32}
+#palette3={0x0f0, 0x444, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000, 0xF0F}
+

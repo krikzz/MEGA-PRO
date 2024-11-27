@@ -1,0 +1,17 @@
+-cp		Copy file on SD card: (megalink -cp d:/file.txt sd:/file.txt)
+-mkdir		Make dir on SD card: (megalink -mkdir sd:/newdir)
+-rtcset		Set RTC time
+-flawr		Write on-board flash chip
+-memprint	print memory content: (megalink -memprint 0x1080000 0x200) prints 512 bytes from offset 0x1080000 (bram)
+-memrd		read memory to file: (megalink -memrd d:/file.bin 0x1080000 0x200) read 512 bytes from offset 0x1080000 (bram) and save to d:/file.bin
+-memwr		write memory from file: (megalink -memwr d:/file.bin 0x1080000) write to offset 0x1080000 (bram) from d:/file.bin
+-recovery 	Install mcu firmware
+-reset		reset the system
+-rstoff 	turns off automatic reset after access to the memory
+-fpga		configure fpga
+-screen		make menu screenshot
+
+Mapper file can be loaded without command, just point *.rbf file along with ROM at megalink.exe 
+
+
+
