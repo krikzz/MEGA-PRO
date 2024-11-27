@@ -10,4 +10,4 @@ megaio-app: This sample show how to use MegaED IO (SD,USB, access to ram etc). <
 megalink: EverDrive USB tool. <br/>
 megatheme: EverDrive menu customization tool.<br/>
 
-![Mega EverDrive](https://raw.githubusercontent.com/krikzz/mega-ed-pub/main/mega-ed.jpg)
+![Mega EverDrive](https://github.com/krikzz/mega-ed-pub/blob/master/mega-ed.jpg)
