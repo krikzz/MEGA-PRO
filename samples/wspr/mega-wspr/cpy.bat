@@ -1,1 +1,0 @@
-E:\projects\MEGA-ED-PRO\_tools\megalink\megalink\bin\Release\megalink.exe -cp megaio.md sd:/megaio.md

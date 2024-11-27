@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 
 namespace megalink
 {
@@ -114,7 +115,7 @@ namespace megalink
             if (path.ToLower().EndsWith(".nes")) dst_addr += 0x10000;
 
             edio.hostReset(Edio.HOST_RST_SOFT);
-            edio.memWR(dst_addr, data, offset, data.Length- offset);
+            edio.memWR(dst_addr, data, offset, data.Length - offset);
             edio.hostReset(Edio.HOST_RST_OFF);
 
             resp = edio.rx8();
@@ -122,11 +123,16 @@ namespace megalink
 
             hostTest();
 
-            if(usr_fpga)edio.fifoWR("*u");//skip fpga reloading from sd
+            if (usr_fpga) edio.fifoWR("*u");//skip fpga reloading from sd
 
             edio.fifoWR("*g");
             edio.fifoTX32(data.Length - offset);
             edio.fifoTxString("USB:" + Path.GetFileName(path));
+        }
+
+        public void startGame(bool usr_fpga)
+        {
+
         }
 
         void hostTest()
@@ -137,6 +143,48 @@ namespace megalink
             if (resp != 'k') throw new Exception("unexpected response: " + resp);
         }
 
-        
+        public void appInstall(string path)
+        {
+            int resp;
+            edio.fifoWR("*i");
+            edio.fifoTxString(path);
+            resp = edio.rx8();
+            if (resp != 0)
+            {
+                throw new Exception("app instalation error: " + resp.ToString("X2"));
+            }
+        }
+
+        public void appStart()
+        {
+            edio.fifoWR("*s");
+        }
+
+        public void reset()
+        {
+            int resp;
+            edio.hostReset(Edio.HOST_RST_SOFT);
+            Thread.Sleep(10);
+            edio.configReset();
+            edio.hostReset(Edio.HOST_RST_OFF);
+
+            resp = edio.rx8();
+            if (resp != 'r')
+            {
+                throw new Exception("unexpected usb status: " + resp.ToString("X2"));
+            }
+
+        }
+
+        public void vramDump(byte[] vram, byte[] palette)
+        {
+            int dump_addr;
+            edio.fifoWR("*v");
+            dump_addr = edio.rx32();
+
+            edio.memRD(dump_addr, vram, 0, 0x10000);
+            edio.memRD(dump_addr + 0x10000, palette, 0, 128);
+        }
+
     }
 }

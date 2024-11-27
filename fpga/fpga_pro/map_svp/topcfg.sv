@@ -1,0 +1,3 @@
+
+`include "../hwc.sv"
+

@@ -40,6 +40,13 @@ namespace megalink
     class Edio
     {
 
+        public const byte DEVID_MEGAPRO = 0x18;
+        public const byte DEVID_MEGACORE = 0x25;
+
+        const byte STATUS_KEY_OLD = 0xA5;
+        const byte STATUS_KEY = 0x5A;
+        const byte PROTOCOL_ID = 0x05;
+
         const int ACK_BLOCK_SIZE = 1024;
 
         public const int MAX_ROM_SIZE = 0xF80000;
@@ -48,7 +55,7 @@ namespace megalink
         public const int ADDR_SRAM = 0x1000000;
         public const int ADDR_BRAM = 0x1080000;
         public const int ADDR_CFG = 0x1800000;
-        public const int ADDR_SSR  = 0x1802000;
+        public const int ADDR_SSR = 0x1802000;
         public const int ADDR_FIFO = 0x1810000;
 
         public const int SIZE_ROMX = 0x1000000;
@@ -67,9 +74,9 @@ namespace megalink
         public const byte FAT_OPEN_ALWAYS = 0x10;
         public const byte FAT_OPEN_APPEND = 0x30;
 
-        public const byte HOST_RST_OFF    = 0;
-        public const byte HOST_RST_SOFT   = 1;
-        public const byte HOST_RST_HARD   = 2;
+        public const byte HOST_RST_OFF = 0;
+        public const byte HOST_RST_SOFT = 1;
+        public const byte HOST_RST_HARD = 2;
 
         const byte CMD_STATUS = 0x10;
         const byte CMD_GET_MODE = 0x11;
@@ -88,7 +95,7 @@ namespace megalink
         const byte CMD_FPG_USB = 0x1E;
         const byte CMD_FPG_SDC = 0x1F;
         const byte CMD_FPG_FLA = 0x20;
-        const byte CMD_FPG_CFG = 0x21;
+        const byte CMD_RTC_CAL = 0x21;
         const byte CMD_USB_WR = 0x22;
         const byte CMD_FIFO_WR = 0x23;
         const byte CMD_UART_WR = 0x24;
@@ -98,6 +105,7 @@ namespace megalink
         const byte CMD_UPD_EXEC = 0x28;
         const byte CMD_HOST_RST = 0x29;
 
+        const byte CMD_STATUS2 = 0x40;
 
         const byte CMD_DISK_INIT = 0xC0;
         const byte CMD_DISK_RD = 0xC1;
@@ -205,7 +213,7 @@ namespace megalink
             txData(buff, 0, buff.Length);
         }
 
-        int rx32()
+        public int rx32()
         {
             byte[] buff = new byte[4];
             rxData(buff, 0, buff.Length);
@@ -239,6 +247,11 @@ namespace megalink
         public byte rx8()
         {
             return (byte)port.ReadByte();
+        }
+
+        public int rxAvailalbe()
+        {
+            return port.BytesToRead;
         }
 
 
@@ -314,7 +327,7 @@ namespace megalink
             txData(str);
         }
 
-        string rxString()
+        public string rxString()
         {
             int len = rx16();
             byte[] buff = new byte[len];
@@ -372,14 +385,48 @@ namespace megalink
             if (resp != 0) throw new Exception("operation error: " + resp.ToString("X2"));
         }
 
-        public int getStatus()
+        public int getStatus_old()
         {
             int resp;
             txCMD(CMD_STATUS);
             resp = rx16();
-            if ((resp & 0xff00) != 0xA500) throw new Exception("unexpected status response (" + resp.ToString("X4") + ")");
+            if ((resp & 0xff00) != 0xA500)
+            {
+                throw new Exception("unexpected status response (" + resp.ToString("X4") + ")");
+            }
             return resp & 0xff;
         }
+
+        public int getStatus()
+        {
+
+            byte[] resp = getStatusBytes();
+
+            if (resp.Length == 2)
+            {
+                if (resp[0] != STATUS_KEY_OLD)
+                {
+                    throw new Exception("unexpected status response (" + BitConverter.ToString(resp) + ")");
+                }
+
+                return resp[1];
+            }
+            else
+            {
+                if (resp[0] != STATUS_KEY)
+                {
+                    throw new Exception("unexpected status response (" + BitConverter.ToString(resp) + ")");
+                }
+
+                if (resp[1] != PROTOCOL_ID)
+                {
+                    throw new Exception("unsupported protocol id (" + BitConverter.ToString(resp) + ")");
+                }
+
+                return resp[3];
+            }
+        }
+
 
 
         public void diskInit()
@@ -718,10 +765,12 @@ namespace megalink
         }
 
 
-        public void fpgInit(int flash_addr)
+        public void fpgInit(int flash_addr, int size)
         {
+            //does not work with early firmware versions
             txCMD(CMD_FPG_FLA);
             tx32(flash_addr);
+            tx32(size);
             tx8(0);//exec
             checkStatus();
         }
@@ -738,7 +787,7 @@ namespace megalink
         }
 
 
-        
+
         public bool isServiceMode()
         {
             txCMD(CMD_GET_MODE);
@@ -771,6 +820,17 @@ namespace megalink
             txData(vals);
         }
 
+        public int rtcCal(DateTime dt, byte arg)
+        {
+            RtcTime rtc = new RtcTime(dt);
+            byte[] vals = rtc.getVals();
+            txCMD(CMD_RTC_CAL);
+            txData(vals);
+            tx8(arg);
+
+            return rx32();
+        }
+
         public void hostReset(byte rst)
         {
             if (force_rst != HOST_RST_OFF && rst != HOST_RST_OFF) rst = force_rst;
@@ -797,8 +857,10 @@ namespace megalink
             int crc_int = (crc[0] << 0) | (crc[1] << 8) | (crc[2] << 16) | (crc[3] << 24);
 
 
-            int old_tout = port.ReadTimeout;
+            int old_tout_rd = port.ReadTimeout;
+            int old_tout_wr = port.WriteTimeout;
             port.ReadTimeout = 8000;
+            port.WriteTimeout = 8000;
 
             txCMD(CMD_USB_RECOV);
             tx32(ADDR_FLA_ICOR);
@@ -806,7 +868,8 @@ namespace megalink
             //txData(crc);
             int status = getStatus();
 
-            port.ReadTimeout = old_tout;
+            port.ReadTimeout = old_tout_rd;
+            port.WriteTimeout = old_tout_wr;
 
             if (status == 0x88)
             {
@@ -866,7 +929,71 @@ namespace megalink
             throw new Exception("boot timeout");
         }
 
-       
+        public void configReset()
+        {
+            byte[] buff = new byte[256];
+            memWR(ADDR_CFG, buff, 0, buff.Length);
+        }
+
+        public byte[] getStatusBytes()
+        {
+            txCMD(CMD_STATUS2);
+            txCMD(CMD_STATUS);
+
+            byte key = rx8();
+
+            if (key == STATUS_KEY_OLD)//legacy status cmd
+            {
+                byte[] buff = new byte[2];
+                buff[0] = STATUS_KEY_OLD;
+                buff[1] = rx8();
+                return buff;
+            }
+            else if (key == STATUS_KEY)//new status. not supported by old firmware (and bootladers)
+            {
+                byte[] resp = rxData(3 + 2);//remain 3 bytes from CMD_STATUS2 + resp from CMD_STATUS
+
+                byte[] buff = new byte[4];
+                buff[0] = STATUS_KEY;
+                buff[1] = resp[0];
+                buff[2] = resp[1];
+                buff[3] = resp[2];
+                return buff;
+            }
+            else
+            {
+                throw new Exception("unexpected status key (" + key.ToString("X2") + ")");
+            }
+        }
+
+        public byte getDeviceID()
+        {
+            byte[] resp = getStatusBytes();
+            if (resp.Length < 4)
+            {
+                return DEVID_MEGAPRO;
+            }
+            else
+            {
+                return resp[2];
+            }
+        }
+
+
+        public string getDeviceName(byte dev_id)
+        {
+            if (dev_id == DEVID_MEGAPRO)
+            {
+                return "Mega EverDrive PRO";
+            }
+
+            if (dev_id == DEVID_MEGACORE)
+            {
+                return "Mega EverDrive CORE";
+            }
+
+            return "Unknown device";
+        }
     }
 
 

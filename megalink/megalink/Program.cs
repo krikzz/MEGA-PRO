@@ -46,9 +46,8 @@ namespace megalink
                 edio = new Edio();
             }
 
-            Console.WriteLine("EverDrive found at " + edio.PortName);
-            Console.WriteLine("EDIO status: " + edio.getStatus().ToString("X4"));
-            Console.WriteLine("");
+            printInfo();
+
 
             bool force_app_mode = true;
             for (int i = 0; i < args.Length; i++)
@@ -66,6 +65,23 @@ namespace megalink
             //edio.getConfig().print();
         }
 
-        
+        static void printInfo()
+        {
+            Console.Write("EverDrive found at " + edio.PortName);
+            byte[] status = edio.getStatusBytes();
+            if (status.Length == 2)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("MCU status: " + status[1].ToString("X2"));
+            }
+            else
+            {
+                Console.WriteLine(", Device ID: " + status[2].ToString("X2") + " (" + edio.getDeviceName(status[2]) + ")");
+                Console.WriteLine("MCU status: " + status[3].ToString("X2"));
+            }
+
+            Console.WriteLine("");
+        }
     }
+
 }

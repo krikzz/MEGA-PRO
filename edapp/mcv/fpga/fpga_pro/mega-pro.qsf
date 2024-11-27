@@ -1,0 +1,346 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2020  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+# Date created = 15:55:14  October 28, 2024
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		mega-pro_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE15F23C8
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:55:14  OCTOBER 28, 2024"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 484
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 8
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name ENABLE_OCT_DONE OFF
+set_global_assignment -name CYCLONEIII_CONFIGURATION_SCHEME "PASSIVE SERIAL"
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name GENERATE_RBF_FILE ON
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_FLASH_NCE_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_AA20 -to BRM_A[0]
+set_location_assignment PIN_AB13 -to BRM_A[1]
+set_location_assignment PIN_AA13 -to BRM_A[2]
+set_location_assignment PIN_U14 -to BRM_A[3]
+set_location_assignment PIN_Y13 -to BRM_A[4]
+set_location_assignment PIN_W15 -to BRM_A[5]
+set_location_assignment PIN_Y17 -to BRM_A[6]
+set_location_assignment PIN_W17 -to BRM_A[7]
+set_location_assignment PIN_T18 -to BRM_A[8]
+set_location_assignment PIN_T16 -to BRM_A[9]
+set_location_assignment PIN_V14 -to BRM_A[10]
+set_location_assignment PIN_T12 -to BRM_A[11]
+set_location_assignment PIN_T15 -to BRM_A[12]
+set_location_assignment PIN_W14 -to BRM_A[13]
+set_location_assignment PIN_U15 -to BRM_A[14]
+set_location_assignment PIN_W13 -to BRM_A[15]
+set_location_assignment PIN_V16 -to BRM_A[16]
+set_location_assignment PIN_V15 -to BRM_A[17]
+set_location_assignment PIN_AB15 -to BRM_D[0]
+set_location_assignment PIN_AA15 -to BRM_D[1]
+set_location_assignment PIN_AB16 -to BRM_D[2]
+set_location_assignment PIN_AA16 -to BRM_D[3]
+set_location_assignment PIN_R12 -to BRM_D[4]
+set_location_assignment PIN_U13 -to BRM_D[5]
+set_location_assignment PIN_V12 -to BRM_D[6]
+set_location_assignment PIN_V13 -to BRM_D[7]
+set_location_assignment PIN_AA18 -to BRM_D[8]
+set_location_assignment PIN_AA17 -to BRM_D[9]
+set_location_assignment PIN_AB18 -to BRM_D[10]
+set_location_assignment PIN_AB17 -to BRM_D[11]
+set_location_assignment PIN_R19 -to BRM_D[12]
+set_location_assignment PIN_T17 -to BRM_D[13]
+set_location_assignment PIN_W19 -to BRM_D[14]
+set_location_assignment PIN_R18 -to BRM_D[15]
+set_location_assignment PIN_AA19 -to BRM_LBn
+set_location_assignment PIN_AB20 -to BRM_OEn
+set_location_assignment PIN_AB19 -to BRM_UBn
+set_location_assignment PIN_U12 -to BRM_WEn
+set_location_assignment PIN_M2 -to BTN
+set_location_assignment PIN_A11 -to CLK
+set_location_assignment PIN_Y21 -to DAC_LRCK
+set_location_assignment PIN_AA21 -to DAC_MCLK
+set_location_assignment PIN_Y22 -to DAC_SCLK
+set_location_assignment PIN_R21 -to DAC_SDIN
+set_location_assignment PIN_J1 -to FCI_IO[0]
+set_location_assignment PIN_F1 -to FCI_IO[1]
+set_location_assignment PIN_E1 -to FCI_IO[2]
+set_location_assignment PIN_G4 -to FCI_IO[3]
+set_location_assignment PIN_D1 -to FCI_IO[4]
+set_location_assignment PIN_H2 -to FCI_IO[5]
+set_location_assignment PIN_H5 -to FCI_IO[6]
+set_location_assignment PIN_J2 -to FCI_IO[7]
+set_location_assignment PIN_J3 -to FCI_IO[8]
+set_location_assignment PIN_G3 -to FCI_IO[9]
+set_location_assignment PIN_H1 -to FCI_MISO
+set_location_assignment PIN_K1 -to FCI_MOSI
+set_location_assignment PIN_G1 -to FCI_SCK
+set_location_assignment PIN_T1 -to FPG_GPCK
+set_location_assignment PIN_Y1 -to FPG_GPIO[1]
+set_location_assignment PIN_W1 -to FPG_GPIO[2]
+set_location_assignment PIN_V1 -to FPG_GPIO[3]
+set_location_assignment PIN_U2 -to FPG_GPIO[4]
+set_location_assignment PIN_N2 -to LED_G
+set_location_assignment PIN_M1 -to LED_R
+set_location_assignment PIN_G21 -to MD_ASn
+set_location_assignment PIN_L22 -to MD_A[1]
+set_location_assignment PIN_M21 -to MD_A[2]
+set_location_assignment PIN_P22 -to MD_A[3]
+set_location_assignment PIN_N20 -to MD_A[4]
+set_location_assignment PIN_P16 -to MD_A[5]
+set_location_assignment PIN_W20 -to MD_A[6]
+set_location_assignment PIN_V22 -to MD_A[7]
+set_location_assignment PIN_W21 -to MD_A[8]
+set_location_assignment PIN_V21 -to MD_A[9]
+set_location_assignment PIN_U21 -to MD_A[10]
+set_location_assignment PIN_W22 -to MD_A[11]
+set_location_assignment PIN_U22 -to MD_A[12]
+set_location_assignment PIN_U19 -to MD_A[13]
+set_location_assignment PIN_P20 -to MD_A[14]
+set_location_assignment PIN_P21 -to MD_A[15]
+set_location_assignment PIN_N22 -to MD_A[16]
+set_location_assignment PIN_M22 -to MD_A[17]
+set_location_assignment PIN_T21 -to MD_A[18]
+set_location_assignment PIN_U20 -to MD_A[19]
+set_location_assignment PIN_R20 -to MD_A[20]
+set_location_assignment PIN_P17 -to MD_A[21]
+set_location_assignment PIN_N19 -to MD_A[22]
+set_location_assignment PIN_R22 -to MD_A[23]
+set_location_assignment PIN_H22 -to MD_CART
+set_location_assignment PIN_N21 -to MD_CASn
+set_location_assignment PIN_K22 -to MD_CEHn
+set_location_assignment PIN_L21 -to MD_CELn
+set_location_assignment PIN_L16 -to MD_DDIR
+set_location_assignment PIN_C21 -to MD_DOEn
+set_location_assignment PIN_J21 -to MD_DTAKn
+set_location_assignment PIN_K16 -to MD_D[0]
+set_location_assignment PIN_J17 -to MD_D[1]
+set_location_assignment PIN_E22 -to MD_D[2]
+set_location_assignment PIN_D21 -to MD_D[3]
+set_location_assignment PIN_D22 -to MD_D[4]
+set_location_assignment PIN_F22 -to MD_D[5]
+set_location_assignment PIN_J16 -to MD_D[6]
+set_location_assignment PIN_L15 -to MD_D[7]
+set_location_assignment PIN_K15 -to MD_D[8]
+set_location_assignment PIN_F19 -to MD_D[9]
+set_location_assignment PIN_E21 -to MD_D[10]
+set_location_assignment PIN_C22 -to MD_D[11]
+set_location_assignment PIN_F21 -to MD_D[12]
+set_location_assignment PIN_F20 -to MD_D[13]
+set_location_assignment PIN_H20 -to MD_D[14]
+set_location_assignment PIN_J15 -to MD_D[15]
+set_location_assignment PIN_T22 -to MD_ECLK
+set_location_assignment PIN_M20 -to MD_OEn
+set_location_assignment PIN_N17 -to MD_SMS[0]
+set_location_assignment PIN_N18 -to MD_SMS[1]
+set_location_assignment PIN_N16 -to MD_SMS[2]
+set_location_assignment PIN_M16 -to MD_SMS[3]
+set_location_assignment PIN_H21 -to MD_SRSTFn
+set_location_assignment PIN_G22 -to MD_VCLK
+set_location_assignment PIN_J22 -to MD_WEHn
+set_location_assignment PIN_K21 -to MD_WELn
+set_location_assignment PIN_B21 -to MKEY_ACT
+set_location_assignment PIN_B22 -to MKEY_SET
+set_location_assignment PIN_H16 -to PSR0_A[0]
+set_location_assignment PIN_E14 -to PSR0_A[1]
+set_location_assignment PIN_E13 -to PSR0_A[2]
+set_location_assignment PIN_G16 -to PSR0_A[3]
+set_location_assignment PIN_F14 -to PSR0_A[4]
+set_location_assignment PIN_E16 -to PSR0_A[5]
+set_location_assignment PIN_F15 -to PSR0_A[6]
+set_location_assignment PIN_E15 -to PSR0_A[7]
+set_location_assignment PIN_A20 -to PSR0_A[8]
+set_location_assignment PIN_B20 -to PSR0_A[9]
+set_location_assignment PIN_A13 -to PSR0_A[10]
+set_location_assignment PIN_B13 -to PSR0_A[11]
+set_location_assignment PIN_C20 -to PSR0_A[12]
+set_location_assignment PIN_D13 -to PSR0_A[13]
+set_location_assignment PIN_D20 -to PSR0_A[14]
+set_location_assignment PIN_C13 -to PSR0_A[15]
+set_location_assignment PIN_D15 -to PSR0_A[16]
+set_location_assignment PIN_F16 -to PSR0_A[17]
+set_location_assignment PIN_B19 -to PSR0_A[18]
+set_location_assignment PIN_A19 -to PSR0_A[19]
+set_location_assignment PIN_A14 -to PSR0_A[20]
+set_location_assignment PIN_D19 -to PSR0_A[21]
+set_location_assignment PIN_F13 -to PSR0_CEn
+set_location_assignment PIN_D17 -to PSR0_D[0]
+set_location_assignment PIN_F12 -to PSR0_D[1]
+set_location_assignment PIN_C15 -to PSR0_D[2]
+set_location_assignment PIN_H12 -to PSR0_D[3]
+set_location_assignment PIN_B16 -to PSR0_D[4]
+set_location_assignment PIN_B15 -to PSR0_D[5]
+set_location_assignment PIN_A16 -to PSR0_D[6]
+set_location_assignment PIN_A15 -to PSR0_D[7]
+set_location_assignment PIN_C17 -to PSR0_D[8]
+set_location_assignment PIN_C19 -to PSR0_D[9]
+set_location_assignment PIN_H17 -to PSR0_D[10]
+set_location_assignment PIN_H19 -to PSR0_D[11]
+set_location_assignment PIN_A17 -to PSR0_D[12]
+set_location_assignment PIN_A18 -to PSR0_D[13]
+set_location_assignment PIN_B17 -to PSR0_D[14]
+set_location_assignment PIN_B18 -to PSR0_D[15]
+set_location_assignment PIN_H18 -to PSR0_LBn
+set_location_assignment PIN_G17 -to PSR0_OEn
+set_location_assignment PIN_F17 -to PSR0_UBn
+set_location_assignment PIN_B14 -to PSR0_WEn
+set_location_assignment PIN_F8 -to PSR1_A[0]
+set_location_assignment PIN_E4 -to PSR1_A[1]
+set_location_assignment PIN_E3 -to PSR1_A[2]
+set_location_assignment PIN_G8 -to PSR1_A[3]
+set_location_assignment PIN_C4 -to PSR1_A[4]
+set_location_assignment PIN_E7 -to PSR1_A[5]
+set_location_assignment PIN_E5 -to PSR1_A[6]
+set_location_assignment PIN_E6 -to PSR1_A[7]
+set_location_assignment PIN_B10 -to PSR1_A[8]
+set_location_assignment PIN_A10 -to PSR1_A[9]
+set_location_assignment PIN_B3 -to PSR1_A[10]
+set_location_assignment PIN_A3 -to PSR1_A[11]
+set_location_assignment PIN_D10 -to PSR1_A[12]
+set_location_assignment PIN_B1 -to PSR1_A[13]
+set_location_assignment PIN_C10 -to PSR1_A[14]
+set_location_assignment PIN_C1 -to PSR1_A[15]
+set_location_assignment PIN_B2 -to PSR1_A[16]
+set_location_assignment PIN_F7 -to PSR1_A[17]
+set_location_assignment PIN_A9 -to PSR1_A[18]
+set_location_assignment PIN_B9 -to PSR1_A[19]
+set_location_assignment PIN_B4 -to PSR1_A[20]
+set_location_assignment PIN_C8 -to PSR1_A[21]
+set_location_assignment PIN_C3 -to PSR1_CEn
+set_location_assignment PIN_D2 -to PSR1_D[0]
+set_location_assignment PIN_F2 -to PSR1_D[1]
+set_location_assignment PIN_C2 -to PSR1_D[2]
+set_location_assignment PIN_E2 -to PSR1_D[3]
+set_location_assignment PIN_A6 -to PSR1_D[4]
+set_location_assignment PIN_A5 -to PSR1_D[5]
+set_location_assignment PIN_B6 -to PSR1_D[6]
+set_location_assignment PIN_B5 -to PSR1_D[7]
+set_location_assignment PIN_D6 -to PSR1_D[8]
+set_location_assignment PIN_C7 -to PSR1_D[9]
+set_location_assignment PIN_G10 -to PSR1_D[10]
+set_location_assignment PIN_F10 -to PSR1_D[11]
+set_location_assignment PIN_B7 -to PSR1_D[12]
+set_location_assignment PIN_B8 -to PSR1_D[13]
+set_location_assignment PIN_A7 -to PSR1_D[14]
+set_location_assignment PIN_A8 -to PSR1_D[15]
+set_location_assignment PIN_C6 -to PSR1_LBn
+set_location_assignment PIN_F9 -to PSR1_OEn
+set_location_assignment PIN_G9 -to PSR1_UBn
+set_location_assignment PIN_A4 -to PSR1_WEn
+set_location_assignment PIN_AA10 -to SRM_A[0]
+set_location_assignment PIN_AA3 -to SRM_A[1]
+set_location_assignment PIN_AB3 -to SRM_A[2]
+set_location_assignment PIN_U7 -to SRM_A[3]
+set_location_assignment PIN_V7 -to SRM_A[4]
+set_location_assignment PIN_Y8 -to SRM_A[5]
+set_location_assignment PIN_Y7 -to SRM_A[6]
+set_location_assignment PIN_Y6 -to SRM_A[7]
+set_location_assignment PIN_V9 -to SRM_A[8]
+set_location_assignment PIN_V8 -to SRM_A[9]
+set_location_assignment PIN_V5 -to SRM_A[10]
+set_location_assignment PIN_V4 -to SRM_A[11]
+set_location_assignment PIN_V10 -to SRM_A[12]
+set_location_assignment PIN_V6 -to SRM_A[13]
+set_location_assignment PIN_V11 -to SRM_A[14]
+set_location_assignment PIN_W6 -to SRM_A[15]
+set_location_assignment PIN_W7 -to SRM_A[16]
+set_location_assignment PIN_U8 -to SRM_A[17]
+set_location_assignment PIN_AA4 -to SRM_CEn
+set_location_assignment PIN_AB4 -to SRM_D[0]
+set_location_assignment PIN_AA5 -to SRM_D[1]
+set_location_assignment PIN_AB5 -to SRM_D[2]
+set_location_assignment PIN_Y4 -to SRM_D[3]
+set_location_assignment PIN_W2 -to SRM_D[4]
+set_location_assignment PIN_V2 -to SRM_D[5]
+set_location_assignment PIN_Y2 -to SRM_D[6]
+set_location_assignment PIN_Y3 -to SRM_D[7]
+set_location_assignment PIN_AA9 -to SRM_D[8]
+set_location_assignment PIN_AA8 -to SRM_D[9]
+set_location_assignment PIN_AB8 -to SRM_D[10]
+set_location_assignment PIN_U9 -to SRM_D[11]
+set_location_assignment PIN_U11 -to SRM_D[12]
+set_location_assignment PIN_U10 -to SRM_D[13]
+set_location_assignment PIN_AB7 -to SRM_D[14]
+set_location_assignment PIN_AA7 -to SRM_D[15]
+set_location_assignment PIN_Y10 -to SRM_LBn
+set_location_assignment PIN_AB10 -to SRM_OEn
+set_location_assignment PIN_AB9 -to SRM_UBn
+set_location_assignment PIN_V3 -to SRM_WEn
+set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_location_assignment PIN_N1 -to MD_HRSTFn
+set_location_assignment PIN_K2 -to DCLK
+set_location_assignment PIN_AA1 -to FPG_GPIO[0]
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
+set_global_assignment -name SYSTEMVERILOG_FILE topcfg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/map_mcv/hub.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/map_mcv/map_mcv.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top.sv
+set_global_assignment -name SDC_FILE clocks.sdc
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/lib_base/var.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/lib_base/sys_cfg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/lib_base/structs.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/lib_base/pi_map.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/lib_base/pi.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/lib_base/mega_ed.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/lib_base/map_sys.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/lib_base/map_nom.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/lib_base/dma.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/lib_base/defs.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/lib_base/base_io.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../mapper/lib_base/audio_out.sv
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp
