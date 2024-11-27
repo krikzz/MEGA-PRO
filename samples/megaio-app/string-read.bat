@@ -1,1 +1,1 @@
-E:\projects\MEGA-ED-PRO\_tools\megalink\megalink\bin\Release\megalink.exe -memwr string.txt 0x1810000
+megalink.exe -memwr string.txt 0x1810000
