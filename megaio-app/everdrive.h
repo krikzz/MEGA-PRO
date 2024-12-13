@@ -29,7 +29,12 @@
  * 0x24000 64K  bram
  */
 
-#define DEVID_MEGA_M20          0x18   
+#define DEVID_MEGAPRO           0x18
+#define DEVID_MEGACORE          0x25
+
+#define STATUS_KEY_OLD          0xA5
+#define STATUS_KEY              0x5A
+#define PROTOCOL_ID             0x05
 
 #define ERR_UNXP_STAT           0x40
 #define ERR_NULL_PATH           0x41
@@ -270,6 +275,7 @@ typedef struct {
 
 u8 ed_init();
 void ed_cmd_status(u16 *status);
+void ed_cmd_status2(void *status);
 u8 ed_check_status();
 
 //disk operations
@@ -308,9 +314,8 @@ void ed_cmd_reboot();
 void ed_cmd_game_ctr();
 void ed_cmd_fla_rd(void *dst, u32 addr, u32 len);
 u8 ed_cmd_fla_wr_sdc(u32 addr, u32 len);
-void ed_cmd_set_disk(u8 *path);
 u8 ed_cmd_fpga_init(u8 *path);
-void ed_cmd_get_cur_path(u8 *path);
+u8 ed_cmd_rom_path(u8 *path, u8 path_type);
 
 void ed_tx_string(u8 *string);
 void ed_rx_string(u8 *string);

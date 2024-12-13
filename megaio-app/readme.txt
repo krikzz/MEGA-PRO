@@ -1,4 +1,4 @@
-This sample show how to use MegaED IO
+This sample show how to use MegaED PRO IO
 .disk access
 .usb communication
 .rtc

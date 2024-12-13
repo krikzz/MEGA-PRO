@@ -13,6 +13,7 @@ void rtcPrint();
 void usbRead();
 void usbWrite();
 u8 romPath();
+void deviceID();
 
 int main() {
 
@@ -56,6 +57,7 @@ u8 megaio() {
         MENU_USB_WR,
         MENU_RTC,
         MENU_ROM_PATH,
+        MENU_DEVID,
         MENU_EXIT,
         MENU_SIZE
     } MENU;
@@ -73,6 +75,7 @@ u8 megaio() {
     menu[MENU_USB_WR] = "usb write";
     menu[MENU_RTC] = "rtc";
     menu[MENU_ROM_PATH] = "rom path";
+    menu[MENU_DEVID] = "device id";
     menu[MENU_EXIT] = "back to menu";
     menu[MENU_SIZE] = 0;
 
@@ -134,8 +137,13 @@ u8 megaio() {
                 break;
 
             case MENU_ROM_PATH:
-                romPath();
+                resp = romPath();
                 break;
+
+            case MENU_DEVID:
+                deviceID();
+                break;
+
         }
 
         if (resp)return resp;
@@ -244,7 +252,7 @@ u8 fileInfo() {
 
     gConsPrint("path: ");
     gAppendString(path);
-    
+
     gConsPrint("size: ");
     gAppendNum(inf.size);
 
@@ -362,28 +370,54 @@ void usbWrite() {//send strings to the virtual com-port. Use any serial terminal
 u8 romPath() {//read path to current rom file from system config
 
     u8 resp;
-    u8 buff[512 + 1];
+    u8 rom_path[512 + 1];
 
     gCleanPlan();
 
-    resp = ed_cmd_file_open("MEGA/sys/registery.dat", FA_READ);
+    //buffer size should be not less than 512B
+    //CMD_ROM_PATH require firmware v24.xxxx or newer
+    resp = ed_cmd_rom_path(rom_path, 0);
     if (resp)return resp;
 
-    resp = ed_cmd_file_read(buff, sizeof (buff));
-    if (resp)return resp;
-
-    resp = ed_cmd_file_close();
-    if (resp)return resp;
-
-    if (buff[0] != '/') {
-        gConsPrint("usb rom: ");
-        gAppendString(buff);
-    } else {
-        gConsPrint("rom path: ");
-        gAppendString(buff);
-    }
+    rom_path[28] = 0; //cut string len
+    gConsPrint("rom path: ");
+    gAppendString(rom_path);
 
     sysJoyWait();
 
     return 0;
+}
+
+void deviceID() {
+
+    u8 resp[4];
+
+    gCleanPlan();
+
+    //0: STATUS_KEY
+    //1: PROTOCOL_ID
+    //2: DEVID
+    //3: EDIO_STATUS
+
+    //CMD_STATUS2 require firmware v24.xxxx or newer
+    ed_cmd_status2(resp);
+
+
+    gConsPrint("dev ID   : ");
+    gAppendHex8(resp[2]);
+    gConsPrint("dev name : ");
+
+    switch (resp[2]) {
+        case DEVID_MEGAPRO:
+            gAppendString("Mega EverDrive PRO");
+            break;
+        case DEVID_MEGACORE:
+            gAppendString("Mega EverDrive CORE");
+            break;
+        default:
+            gAppendString("Unknown");
+            break;
+    }
+
+    sysJoyWait();
 }

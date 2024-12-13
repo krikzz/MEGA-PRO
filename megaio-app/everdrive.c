@@ -19,7 +19,7 @@
 #define CMD_FPG_USB     0x1E
 #define CMD_FPG_SDC     0x1F
 #define CMD_FPG_FLA     0x20
-#define CMD_SET_DISK    0x21
+#define CMD_RTC_CAL     0x21
 #define CMD_USB_WR      0x22
 #define CMD_FIFO_WR     0x23
 #define CMD_UART_WR     0x24
@@ -28,7 +28,15 @@
 #define CMD_GAME_CTR    0x27
 #define CMD_UPD_EXEC    0x28
 #define CMD_HOST_RST    0x29
+#define CMD_RAPP_SET    0x2B
+#define CMD_SUB_STATUS  0x2C
+#define CMD_EFU_UNPACK  0x2E//install menu to sd from flash
+#define CMD_EFU_UPDATE  0x2F//write efu to flash
+#define CMD_ROM_PATH    0x31
+#define CMD_EFU_UNFILE  0x32//install menu to sd from file
 
+#define CMD_STATUS2     0x40
+#define CMD_CD_MOUNT    0x41
 
 #define CMD_DISK_INIT   0xC0
 #define CMD_DISK_RD     0xC1
@@ -51,8 +59,11 @@
 #define CMD_F_DIR_MK    0xD2
 #define CMD_F_DEL       0xD3
 #define CMD_F_SEEK_IDX  0xD4
-
-#define CMD_GET_SIGNA   0xF3
+#define CMD_F_AVB       0xD5
+#define CMD_F_FCP       0xD6
+#define CMD_F_SEEK_PAT  0xD8 //seek data pattern
+#define CMD_F_DTEST     0xD9 //check if dir exists
+#define CMD_F_FTEST     0xDA //check if file exists
 
 #define ACK_BLOCK_SIZE  1024
 
@@ -104,10 +115,16 @@ void ed_cmd_tx(u8 cmd) {
     ed_fifo_wr(buff, sizeof (buff));
 }
 
-void ed_cmd_status(u16 *status) {
+void ed_cmd_status(u16 *status) {//old status command
 
     ed_cmd_tx(CMD_STATUS);
     ed_fifo_rd(status, 2);
+}
+
+void ed_cmd_status2(void *status) {//supported since fw v24.xxxx
+
+    ed_cmd_tx(CMD_STATUS2);
+    ed_fifo_rd(status, 4);
 }
 
 u8 ed_cmd_disk_init() {
@@ -457,15 +474,19 @@ u8 ed_cmd_fla_wr_sdc(u32 addr, u32 len) {
     return ed_check_status();
 }
 
-void ed_cmd_set_disk(u8 *path) {
+u8 ed_cmd_cd_mount(u8 *path) {
 
-    ed_cmd_tx(CMD_SET_DISK);
+    ed_cmd_tx(CMD_CD_MOUNT);
     ed_tx_string(path);
+    return ed_check_status();
 }
 
-void ed_cmd_get_cur_path(u8 *path) {
-    ed_cmd_tx(CMD_F_DIR_PATH);
+u8 ed_cmd_rom_path(u8 *path, u8 path_type) {
+
+    ed_cmd_tx(CMD_ROM_PATH);
+    ed_fifo_wr(&path_type, 1); //0-rom, 1-cue
     ed_rx_string(path);
+    return ed_check_status();
 }
 
 //****************************************************************************** 
@@ -656,5 +677,3 @@ void ed_halt_app(u8 stat_req) {//must be executed from ram area
 
 void ed_halt_app_end() {
 }
-
-
