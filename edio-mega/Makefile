@@ -3,7 +3,7 @@ CC= $(GCC)bin/gcc
 OBJC= $(GCC)bin/objcopy
 ASMZ80= $(GCC)bin/asmz80
 BINTOC= $(GCC)bin/bintoc
-OUTPUT= megaio
+OUTPUT= edio-mega
 LIB=$(GCC)lib
 BIN= $(GCC)bin
 
